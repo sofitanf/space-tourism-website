@@ -1,0 +1,37 @@
+$color-primary: #0b0d17;
+$color-secondary: #d0d6f9;
+$color-white: #ffffff;
+// breakpoints
+$bp-extra-largest: 84em;
+$bp-largest: 75em; // 1200px / 16
+$bp-large: 68.75em; // 1100px
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
+// FONT VARIABLES
+$font-barlow: 'Barlow Condensed',
+sans-serif;
+$font-bellefair: 'Bellefair',
+sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.pb-12 {
+    padding-bottom: 12px;
+}

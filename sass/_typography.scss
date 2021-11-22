@@ -1,0 +1,178 @@
+.heading-1 {
+    font-family: $font-bellefair;
+    color: $color-white;
+    font-size: 150px;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    line-height: 172px;
+    @media only screen and (max-width: $bp-medium) {
+        line-height: 150px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        font-size: 80px;
+        line-height: 100px;
+    }
+}
+
+.heading-2 {
+    font-family: $font-bellefair;
+    color: $color-white;
+    font-size: 100px;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 80px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        font-size: 56px;
+    }
+}
+
+.heading-3 {
+    font-family: $font-bellefair;
+    font-size: 56px;
+    text-transform: uppercase;
+    color: $color-white;
+    padding: 0;
+    margin: 0;
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 24px;
+    }
+}
+
+.heading-4,
+.heading-4--white,
+.heading-4--active {
+    font-family: $font-bellefair;
+    color: $color-white;
+    font-size: 32px;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    opacity: .5;
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 24px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        font-size: 16px;
+    }
+}
+
+.heading-4--white {
+    color: $color-white;
+    opacity: 1;
+}
+
+.heading-4--active {
+    background-color: $color-white;
+    color: $color-primary;
+    opacity: 1;
+}
+
+.heading-5 {
+    font-family: $font-barlow;
+    color: $color-secondary;
+    font-size: 28px;
+    letter-spacing: 4.75px;
+    text-transform: uppercase;
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 20px;
+        letter-spacing: 3.28px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        font-size: 16px;
+        letter-spacing: 2.7px;
+    }
+}
+
+.subheading-1 {
+    font-family: $font-bellefair;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: $color-white;
+}
+
+.subheading-2 {
+    font-family: $font-barlow;
+    color: $color-secondary;
+    font-size: 14px;
+    letter-spacing: 2.35px;
+    text-transform: uppercase;
+}
+
+.nav-text {
+    font-family: $font-barlow;
+    color: $color-white;
+    font-size: 16px;
+    letter-spacing: 2.7px;
+    text-transform: uppercase;
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 14px;
+        letter-spacing: 2.36px;
+    }
+    &--bold {
+        font-weight: 700;
+    }
+    &--blue {
+        color: $color-secondary;
+    }
+    &--active {
+        border-color: $color-white;
+        border-bottom: solid;
+        padding-bottom: 12px;
+    }
+}
+
+.text {
+    font-family: $font-barlow;
+    color: $color-secondary;
+    font-size: 18px;
+    line-height: 32px;
+    max-width: 444px;
+    @media only screen and (max-width: $bp-medium) {
+        text-align: center;
+        font-size: 16px;
+        line-height: 28px;
+        margin: 0 auto;
+    }
+    @media only screen and (max-width: $bp-small) {
+        // max-width: 327px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 25px;
+    }
+}
+
+.title {
+    font-family: $font-barlow;
+    color: $color-secondary;
+    font-size: 28px;
+    letter-spacing: 4.75px;
+    text-transform: uppercase;
+    &-wrap {
+        display: flex;
+        flex-direction: row;
+        gap: 28px;
+        @media only screen and (max-width: $bp-small) {
+            justify-content: center;
+        }
+    }
+    &__number {
+        font-family: $font-barlow;
+        color: $color-white;
+        font-size: 28px;
+        letter-spacing: 4.75px;
+        text-transform: uppercase;
+        opacity: .25;
+    }
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 20px;
+        letter-spacing: 3.38px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        font-size: 16px;
+        letter-spacing: 2.7px;
+    }
+}

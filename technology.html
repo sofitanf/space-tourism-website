@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&family=Barlow:wght@300;500;700&family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Frontend Mentor | Space tourism website</title>
+</head>
+
+<body class="tech wrap">
+    <div class="wrap_content">
+        <div class="navbar">
+            <img class="navbar__logo" src="./assets/shared/logo.svg" alt="">
+            <div class="navbar__line"></div>
+            <div class="navbar__text">
+                <a href="index.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">00</p>
+                    <p class="nav-text">Home</p>
+                </a>
+                <a href="destination.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">01</p>
+                    <p class="nav-text">Destination</p>
+                </a>
+                <a href="crew.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">02</p>
+                    <p class="nav-text">Crew</p>
+                </a>
+                <a href="technology.html" class="navbar__text--wrap navbar__text--wrap_active">
+                    <p class="nav-text--bold nav-text navbar__text--number">04</p>
+                    <p class="nav-text">Technology</p>
+                </a>
+            </div>
+            <img onclick="toggle('open')" src="./assets/shared/icon-hamburger.svg" alt="" class="navbar__icon">
+        </div>
+        <div class="container">
+            <div class="title-wrap">
+                <div class="title__number title">
+                    03
+                </div>
+                <div class="title">
+                    Space launch 101
+                </div>
+            </div>
+        </div>
+        <div class="tech__content">
+            <div class="tech__content--option">
+                <div class="tech__content--option_wrap-btn">
+                    <p onclick="selectTech(this, 1)" class="tech__content--option_wrap-btn__btn heading-4--active">1</p>
+                    <p onclick="selectTech(this, 2)" class="tech__content--option_wrap-btn__btn heading-4--white">2</p>
+                    <p onclick="selectTech(this, 3)" class="tech__content--option_wrap-btn__btn heading-4--white">3</p>
+                </div>
+                <div class="tech__content--option_desc">
+                    <p class="nav-text--blue nav-text">The terminology..</p>
+                    <p id="name" class="heading-3 tech__content--option_desc--tech">A launch vehicle</p>
+                    <p id="desc" class="text">A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres
+                        tall, it's quite an awe-inspiring sight on the launch pad!</p>
+                </div>
+            </div>
+            <img id="portrait" class="tech__content--picture_desktop" src="./assets/technology/image-launch-vehicle-portrait.jpg" alt="">
+            <img id="landscape" class="tech__content--picture_tab" src="./assets/technology/image-launch-vehicle-landscape.jpg" alt="">
+        </div>
+    </div>
+    <div id="nav" class="nav-mobile">
+        <div class="nav-mobile__icon">
+            <img onclick="toggle('close')" src="./assets/shared/icon-close.svg" alt="" class="navbar__icon ">
+        </div>
+        <div class="nav-mobile__link">
+            <a href="index.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">00</p>
+                <p class="nav-text">Home</p>
+            </a>
+            <a href="destination.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">01</p>
+                <p class="nav-text">Destination</p>
+            </a>
+            <a href="crew.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">02</p>
+                <p class="nav-text">Crew</p>
+            </a>
+            <a href="technology.html" class="nav-mobile__wrap nav-mobile__wrap_active">
+                <p class="nav-text--bold nav-text navbar__text--number">04</p>
+                <p class="nav-text">Technology</p>
+            </a>
+        </div>
+    </div>
+    <script src="./assets/script.js"></script>
+    <script>
+        let technologies = []
+        let technology = {}
+
+        fetch('data.json')
+            .then(function(response) {
+                return response.json()
+            }).then(function(data) {
+                technologies.push(...data.technology)
+                technology = technologies[0]
+            })
+
+        function selectTech(elem, tech) {
+            technology = technologies[tech - 1]
+
+            var siblings = n => [...n.parentElement.children].filter(c => c != n)
+
+            var brothers_n_sisters = siblings(elem)
+            elem.classList.replace('heading-4--white', 'heading-4--active')
+            brothers_n_sisters.forEach(e => e.classList.replace('heading-4--active', 'heading-4--white'))
+
+            this.content()
+        }
+
+        function content() {
+            let name = document.getElementById('name')
+            let desc = document.getElementById('desc')
+            let portrait = document.getElementById('portrait')
+            let landscape = document.getElementById('landscape')
+
+            name.innerHTML = technology.name
+            desc.innerHTML = technology.description
+            portrait.src = technology.images.portrait
+            landscape.src = technology.images.landscape
+        }
+    </script>
+
+</body>
+
+</html>

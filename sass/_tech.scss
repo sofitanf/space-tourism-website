@@ -1,0 +1,113 @@
+.tech {
+    background-image: url(../assets/technology/background-technology-desktop.jpg);
+    background-size: cover;
+    @media only screen and (max-width: $bp-medium) {
+        background-image: url(../assets/technology/background-technology-tablet.jpg);
+    }
+    @media only screen and (max-width: $bp-small) {
+        background-image: url(../assets/technology/background-technology-mobile.jpg);
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 26px 0 101px 165px;
+        @media only screen and (max-width: $bp-largest) {
+            padding-left: 60px;
+        }
+        @media only screen and (max-width: $bp-large) {
+            flex-direction: column-reverse;
+            padding-left: 0;
+            padding-bottom: 97px;
+        }
+        @media only screen and (max-width: $bp-small) {
+            padding-bottom: 81px;
+        }
+        &--picture {
+            width: 515px;
+            height: 527px;
+            &_desktop {
+                @media only screen and (max-width: $bp-large) {
+                    display: none;
+                }
+            }
+            &_tab {
+                display: none;
+                padding-top: 60px;
+                width: 100%;
+                @media only screen and (max-width: $bp-large) {
+                    display: block;
+                }
+                @media only screen and (max-width: $bp-small) {
+                    padding-top: 0;
+                }
+            }
+        }
+        &--option {
+            display: flex;
+            flex-direction: row;
+            gap: 80px;
+            @media only screen and (max-width: $bp-large) {
+                flex-direction: column;
+                gap: 44px;
+            }
+            @media only screen and (max-width: $bp-small) {
+                gap: 26px;
+            }
+            &_desc {
+                // max-width: 335px;
+                @media only screen and (max-width: $bp-large) {
+                    text-align: center;
+                }
+                @media only screen and (max-width: $bp-small) {
+                    padding: 0 24px;
+                }
+                &--tech {
+                    margin: 11px 0 17px 0;
+                    @media only screen and (max-width: $bp-medium) {
+                        margin: 16px 0;
+                    }
+                    @media only screen and (max-width: $bp-small) {
+                        margin: 9px 0 16px 0;
+                    }
+                }
+            }
+            &_wrap-btn {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+                @media only screen and (max-width: $bp-large) {
+                    flex-direction: row;
+                    justify-content: center;
+                    padding-top: 56px;
+                }
+                @media only screen and (max-width: $bp-small) {
+                    padding-top: 32px;
+                }
+                &__btn {
+                    width: 80px;
+                    height: 80px;
+                    border: 1px solid rgba(255, 255, 255, 0.25);
+                    box-sizing: border-box;
+                    border-radius: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: border .3s;
+                    cursor: pointer;
+                    &:hover {
+                        border: 1px solid rgba(255, 255, 255, 0.5);
+                    }
+                    @media only screen and (max-width: $bp-medium) {
+                        width: 58px;
+                        height: 58px;
+                    }
+                    @media only screen and (max-width: $bp-small) {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&family=Barlow:wght@300;500;700&family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Frontend Mentor | Space tourism website</title>
+</head>
+
+<body class="destination wrap">
+    <div class="wrap__content">
+        <div class="navbar">
+            <img class="navbar__logo" src="./assets/shared/logo.svg" alt="">
+            <div class="navbar__line"></div>
+            <div class="navbar__text">
+                <a href="index.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">00</p>
+                    <p class="nav-text">Home</p>
+                </a>
+                <a href="destination.html" class="navbar__text--wrap navbar__text--wrap_active">
+                    <p class="nav-text--bold nav-text navbar__text--number">01</p>
+                    <p class="nav-text">Destination</p>
+                </a>
+                <a href="crew.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">02</p>
+                    <p class="nav-text">Crew</p>
+                </a>
+                <a href="technology.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">04</p>
+                    <p class="nav-text">Technology</p>
+                </a>
+            </div>
+            <img onclick="toggle('open')" src="./assets/shared/icon-hamburger.svg" alt="" class="navbar__icon">
+        </div>
+        <div class="container">
+            <div class="title-wrap">
+                <div class="title__number title">
+                    01
+                </div>
+                <div class="title">
+                    Pick your destination
+                </div>
+            </div>
+            <div class="destination__content">
+                <img id="picture" class="destination__content--planet" src="./assets/destination/image-moon.webp" alt="">
+                <div class="destination__content--text">
+                    <div class="destination__content--text_select">
+                        <p onclick="select(this)" class="nav-text nav-text--active">Moon</p>
+                        <p onclick="select(this)" class="nav-text destination__select">Mars</p>
+                        <p onclick="select(this)" class="nav-text destination__select">Europa</p>
+                        <p onclick="select(this)" class="nav-text destination__select">Titan</p>
+                    </div>
+                    <div id="name" class="heading-2 destination__content--text_planet">Moon</div>
+                    <div id="desc" class="text destination__content--text_desc">
+                        See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.
+                    </div>
+                    <div class="line"></div>
+                    <div class="destination__content--text_add">
+                        <div>
+                            <div class="subheading-2 pb-12">Avg. distance</div>
+                            <div id="distance" class="subheading-1">384.400. km</div>
+                        </div>
+                        <div>
+                            <div class="subheading-2 pb-12">Est. travel time</div>
+                            <div id="travel" class="subheading-1">3 days</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nav" class="nav-mobile hidden">
+        <img onclick="toggle('close')" src="./assets/shared/icon-close.svg" alt="" class="navbar__icon nav-mobile__icon">
+        <div class="nav-mobile__link">
+            <a href="index.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">00</p>
+                <p class="nav-text">Home</p>
+            </a>
+            <a href="destination.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">01</p>
+                <p class="nav-text">Destination</p>
+            </a>
+            <a href="crew.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">02</p>
+                <p class="nav-text">Crew</p>
+            </a>
+            <a href="technology.html" class="nav-mobile__wrap nav-mobile__wrap_active">
+                <p class="nav-text--bold nav-text navbar__text--number">04</p>
+                <p class="nav-text">Technology</p>
+            </a>
+        </div>
+    </div>
+    <script src="./assets/script.js"></script>
+    <script>
+        let currentDestination = {}
+        let destinations = []
+
+        fetch('data.json')
+            .then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                destinations.push(...data.destinations)
+                currentDestination = destinations[0]
+            })
+
+        function select(text) {
+            destinations.map(destination => {
+                destination.name === text.innerHTML ? currentDestination = destination : ''
+            })
+            var siblings = n => [...n.parentElement.children].filter(c => c != n)
+
+            var brothers_n_sisters = siblings(text)
+            text.classList.replace('destination__select', 'nav-text--active')
+            brothers_n_sisters.forEach(e => e.classList.replace('nav-text--active', 'destination__select'))
+
+            this.content()
+        }
+
+        function content() {
+            let picture = document.getElementById('picture')
+            let name = document.getElementById('name')
+            let desc = document.getElementById('desc')
+            let distance = document.getElementById('distance')
+            let travel = document.getElementById('travel')
+
+            picture.src = currentDestination.images.webp
+            name.innerHTML = currentDestination.name
+            desc.innerHTML = currentDestination.description
+            distance.innerHTML = currentDestination.distance
+            travel.innerHTML = currentDestination.travel
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&family=Barlow:wght@300;500;700&family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Frontend Mentor | Space tourism website</title>
+</head>
+
+<body class="crew wrap">
+    <div class="wrap__content ">
+        <div class="navbar">
+            <img class="navbar__logo" src="./assets/shared/logo.svg" alt="">
+            <div class="navbar__line"></div>
+            <div class="navbar__text">
+                <a href="index.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">00</p>
+                    <p class="nav-text">Home</p>
+                </a>
+                <a href="destination.html" class="navbar__text--wrap ">
+                    <p class="nav-text--bold nav-text navbar__text--number">01</p>
+                    <p class="nav-text">Destination</p>
+                </a>
+                <a href="crew.html" class="navbar__text--wrap navbar__text--wrap_active">
+                    <p class="nav-text--bold nav-text navbar__text--number">02</p>
+                    <p class="nav-text">Crew</p>
+                </a>
+                <a href="technology.html" class="navbar__text--wrap">
+                    <p class="nav-text--bold nav-text navbar__text--number">04</p>
+                    <p class="nav-text">Technology</p>
+                </a>
+            </div>
+            <img onclick="toggle('open')" src="./assets/shared/icon-hamburger.svg" alt="" class="navbar__icon">
+        </div>
+        <div class="container ">
+            <div class="title-wrap crew__content--title">
+                <div class="title__number title">
+                    02
+                </div>
+                <div class="title">
+                    Meet your crew
+                </div>
+            </div>
+            <div class="crew__content">
+                <div class="crew__text">
+                    <p id="role" class="heading-4">Commander</p>
+                    <p id="name" class="heading-3 crew__text--name">Douglas Hurley</p>
+                    <p id="bio" class="text crew__text--desc">
+                        Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
+                    </p>
+                    <div class="crew__wrap--btn">
+                        <button onclick="select(this, 1)" class="crew__btn"></button>
+                        <button onclick="select(this, 2)" class="crew__btn"></button>
+                        <button onclick="select(this, 3)" class="crew__btn"></button>
+                        <button onclick="select(this, 4)" class="crew__btn"></button>
+                    </div>
+                </div>
+                <div class="line crew__line"></div>
+                <img id="picture" class="crew__picture" src="./assets/crew/image-douglas-hurley.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="nav" class="nav-mobile hidden">
+        <img onclick="toggle('close')" src="./assets/shared/icon-close.svg" alt="" class="navbar__icon nav-mobile__icon">
+        <div class="nav-mobile__link">
+            <a href="index.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">00</p>
+                <p class="nav-text">Home</p>
+            </a>
+            <a href="destination.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">01</p>
+                <p class="nav-text">Destination</p>
+            </a>
+            <a href="crew.html" class="nav-mobile__wrap">
+                <p class="nav-text--bold nav-text navbar__text--number">02</p>
+                <p class="nav-text">Crew</p>
+            </a>
+            <a href="technology.html" class="nav-mobile__wrap nav-mobile__wrap_active">
+                <p class="nav-text--bold nav-text navbar__text--number">04</p>
+                <p class="nav-text">Technology</p>
+            </a>
+        </div>
+    </div>
+    <script src="./assets/script.js"></script>
+    <script>
+        let crews = []
+        let crew = {}
+        var slideIndex = 1;
+
+        fetch('data.json')
+            .then(function(response) {
+                return response.json()
+            }).then(function(data) {
+                crews.push(...data.crew)
+                crew = crews[0]
+            })
+
+        carousel();
+
+        function carousel() {
+            var i;
+            slideIndex++;
+            if (slideIndex > crews.length) {
+                slideIndex = 1
+            }
+
+            crew = crews[slideIndex - 1]
+
+            var dots = document.getElementsByClassName('crew__btn')
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('crew__btn--active');
+            }
+            // dots.forEach(e => e.classList.remove('crew__btn--active'))
+            dots[slideIndex - 1].classList.add('crew__btn--active')
+
+            setTimeout(carousel, 6000);
+            this.content()
+        }
+
+        function select(elem, num) {
+            crew = crews[num - 1]
+            var siblings = n => [...n.parentElement.children].filter(c => c != n)
+
+            var brothers_n_sisters = siblings(elem)
+            elem.classList.add('crew__btn--active')
+            brothers_n_sisters.forEach(e => e.classList.remove('crew__btn--active'))
+            this.content()
+        }
+
+        function content() {
+            let role = document.getElementById('role')
+            let name = document.getElementById('name')
+            let bio = document.getElementById('bio')
+            let picture = document.getElementById('picture')
+
+            role.innerHTML = crew.role
+            name.innerHTML = crew.name
+            bio.innerHTML = crew.bio
+            picture.src = crew.images.webp
+        }
+    </script>
+</body>
+
+</html>

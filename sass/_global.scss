@@ -1,0 +1,140 @@
+.wrap {
+    position: relative;
+    &_content {
+        position: relative;
+    }
+}
+
+.nav-mobile {
+    display: none;
+    @media only screen and (max-width: $bp-small) {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        background-color: #222;
+        z-index: 1;
+        padding-top: 34px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(81.5485px);
+        overflow-x: hidden;
+        transition: all .5s;
+    }
+    &__wrap {
+        display: flex;
+        gap: 10px;
+    }
+    &__link {
+        display: none;
+        @media only screen and (max-width: $bp-small) {
+            margin-top: 65px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+    }
+    &__icon {
+        float: right;
+    }
+}
+
+.container {
+    padding: 0 165px;
+    @media only screen and (max-width: $bp-extra-largest) {
+        padding: 0 70px;
+    }
+    @media only screen and (max-width: $bp-largest) {
+        padding: 0 60px;
+    }
+    @media only screen and (max-width: $bp-large) {
+        padding: 0 50px;
+    }
+    @media only screen and (max-width: $bp-medium) {
+        padding: 0 38.5px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        padding: 0 24px;
+    }
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background: #383B4B;
+}
+
+.navbar {
+    padding: 40px 0 76px 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    @media only screen and (max-width: $bp-large) {
+        padding: 0 0 40px 39px;
+    }
+    @media only screen and (max-width: $bp-small) {
+        padding: 24px;
+    }
+    &__logo {
+        @media only screen and (max-width: $bp-small) {
+            width: 40px;
+        }
+    }
+    &__line {
+        z-index: 1;
+        height: 1px;
+        width: 100%;
+        background: #FFFFFF;
+        mix-blend-mode: normal;
+        opacity: 0.25;
+        margin: 0 -25px 0 64px;
+        @media only screen and (max-width: $bp-large) {
+            display: none;
+        }
+    }
+    &__icon {
+        display: none;
+        cursor: pointer;
+        @media only screen and (max-width: $bp-small) {
+            display: block;
+        }
+    }
+    &__text {
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(81.5485px);
+        padding: 38px 165px 0 123px;
+        @media only screen and (max-width: $bp-large) {
+            padding: 38px 47px 0 47px;
+        }
+        @media only screen and (max-width: $bp-small) {
+            display: none;
+        }
+        &--number {
+            @media only screen and (max-width: $bp-large) {
+                display: none;
+            }
+            @media only screen and (max-width: $bp-small) {
+                display: block;
+            }
+        }
+        &--wrap {
+            display: flex;
+            gap: 11px;
+            padding-bottom: 38px;
+            &:hover {
+                padding-bottom: 35px;
+                border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+            }
+            &_active {
+                padding-bottom: 35px;
+                border-bottom: 3px solid $color-white !important;
+            }
+        }
+    }
+}
