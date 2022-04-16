@@ -10,13 +10,6 @@
 html {
   box-sizing: border-box; }
 
-html,
-body {
-  min-height: 100%; }
-
-body {
-  height: 100vh; }
-
 a {
   text-decoration: none; }
 
@@ -29,22 +22,21 @@ a {
     position: relative; }
 
 .nav-mobile {
-  display: none; }
-  @media only screen and (max-width: 37.5em) {
-    .nav-mobile {
-      display: block;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      height: 100%;
-      width: 0px;
-      background-color: #222;
-      z-index: 1;
-      padding-top: 34px;
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(81.5485px);
-      overflow-x: hidden;
-      transition: all .5s; } }
+  display: none;
+  height: 100%;
+  width: 65%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  display: block;
+  background-color: #222;
+  padding: 34px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(81.5485px);
+  transition: all .5s; }
   .nav-mobile__wrap {
     display: flex;
     gap: 10px; }
@@ -623,7 +615,10 @@ a {
           gap: 26px; } }
       @media only screen and (max-width: 68.75em) {
         .tech__content--option_desc {
-          text-align: center; } }
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center; } }
       @media only screen and (max-width: 37.5em) {
         .tech__content--option_desc {
           padding: 0 24px; } }
