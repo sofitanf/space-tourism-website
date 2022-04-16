@@ -48,11 +48,15 @@
             </div>
             <div class="crew__content">
                 <div class="crew__text">
-                    <p id="role" class="heading-4">Commander</p>
-                    <p id="name" class="heading-3 crew__text--name">Douglas Hurley</p>
-                    <p id="bio" class="text crew__text--desc">
-                        Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
-                    </p>
+                    <div class="crew__text--info">
+                        <p id="role" class="heading-4">Commander</p>
+                        <p id="name" class="heading-3 crew__text--name">Douglas Hurley</p>
+                        <div class="wrap__desc">
+                            <p id="bio" class="text crew__text--desc">
+                                Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
+                            </p>
+                        </div>
+                    </div>
                     <div class="crew__wrap--btn">
                         <button onclick="select(this, 1)" class="crew__btn"></button>
                         <button onclick="select(this, 2)" class="crew__btn"></button>
@@ -61,7 +65,9 @@
                     </div>
                 </div>
                 <div class="line crew__line"></div>
-                <img id="picture" class="crew__picture" src="./assets/crew/image-douglas-hurley.png" alt="">
+                <div class="crew__wrap--picture">
+                    <img id="picture" class="crew__picture" src="./assets/crew/image-douglas-hurley.png" alt="">
+                </div>
             </div>
         </div>
     </div>
